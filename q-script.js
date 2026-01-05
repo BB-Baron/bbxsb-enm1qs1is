@@ -101,75 +101,57 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ショートカット
-function normalizeShortcutKey(event) {
-  // 1) まずは keyCode / which を吸収（古い実装やiPadOS差分をここで救う）
-  const kc = event.keyCode || event.which;
-
-  // 数字キー（上段）: 48-57 => '0'..'9'
-  if (kc >= 48 && kc <= 57) {
-    return String(kc - 48);
-  }
-
-  // テンキー: 96-105 => '0'..'9'
-  if (kc >= 96 && kc <= 105) {
-    return String(kc - 96);
-  }
-
-  // 2) 物理キーが分かるなら code を優先（iPadOS/BTテンキーでも NumpadX が出る場合がある）
-  if (event.code && event.code.startsWith('Numpad')) {
-    const rest = event.code.replace('Numpad', ''); // '7' や 'Decimal' など
-    if (/^\d$/.test(rest)) return rest;
-    if (rest === 'Decimal') return '.';
-    if (rest === 'Divide') return '/';
-    if (rest === 'Multiply') return '*';
-  }
-
-  // 3) 最後に key（環境依存があるので最後）
-  return event.key;
-}
-
-// ショートカット
 document.addEventListener('keydown', function(event) {
-  const key = normalizeShortcutKey(event);
-
-  switch (key) {
-    case '/':
-      resetButton.click();
-      break;
-
-    case '*':
-      settingModalElement.style.display = 'block';
-      break;
-
-    // Left Side
-    case '7':
-      leftDecisionButtons[3].click();
-      break;
-    case '4':
-      leftDecisionButtons[2].click();
-      break;
-    case '1':
-      leftDecisionButtons[1].click();
-      break;
-    case '0':
-      leftDecisionButtons[0].click();
-      break;
-
-    // Right Side
-    case '9':
-      rightDecisionButtons[3].click();
-      break;
-    case '6':
-      rightDecisionButtons[2].click();
-      break;
-    case '3':
-      rightDecisionButtons[1].click();
-      break;
-    case '.':
-      rightDecisionButtons[0].click();
-      break;
-
-    default:
-      break;
+  switch (event.key) {
+      case '/':
+          resetButton.click();
+          break;
+      case '*':
+          //settingModal.style.display = 'block';
+          settingModalElement.style.display = 'block';
+          break;
+      // Left Side
+      case '7':
+          leftDecisionButtons[3].click();
+          break;
+      case '4':
+          leftDecisionButtons[2].click();
+          break;
+      case '1':
+          leftDecisionButtons[1].click();
+          break;
+      case '0':
+          leftDecisionButtons[0].click();
+          break;
+      // Right Side
+      case '9':
+          rightDecisionButtons[3].click();
+          break;
+      case '6':
+          rightDecisionButtons[2].click();
+          break;
+      case '3':
+          rightDecisionButtons[1].click();
+          break;
+      case '.':
+          rightDecisionButtons[0].click();
+          break;
+      default:
+          break;
   }
 });
+// フォントサイズ調整
+// function adjustFontSize() {
+//   const leftScoreElement = document.getElementById('leftscore');
+//   const rightScoreElement = document.getElementById('rightscore');
+//   const appElement = document.getElementById('app');
+//   const width = appElement.clientWidth;
+//   const height = appElement.clientHeight;
+// 
+//   const fontSize = Math.min(width, height * 2) * 0.4;
+// 
+//   leftScoreElement.style.fontSize = '${fontSize}px';
+//   rightScoreElement.style.fontSize = '${fontSize}px';
+// }
+// window.addEventListener('load', adjustFontSize);
+// window.addEventListener('resize', adjustFontSize);
