@@ -1,5 +1,5 @@
 // ============================================================
-// BeyBlade X Scoreboard - script.js
+// BeyBlade X Scoreboard - script.js (replacement full file)
 // ============================================================
 
 /**
