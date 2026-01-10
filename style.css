@@ -136,6 +136,8 @@ z-index: 111;
 #rightScore {
     font-size: 9vw;
     /*border: 1px #333 dotted;*/
+  /* 調整 */
+    margin-top: -15%;
 }
 
 .container {
@@ -171,6 +173,8 @@ z-index: 111;
 #left-player-name, #right-player-name {
   font-size: 3vw;
   margin: -5vmin 0 0;
+  /* 調整 */
+  margin-top:0;
   color: #333;
 }
 div#left-player-name, div#right-player-name{
